@@ -10,26 +10,41 @@
     <script>
       // JS START
 
-      function playRound(playerSelection, computerSelection) {
-        function computerPlay() {
-          const answerArray = ["rock", "paper", "scissors"];
-          let randomAnswer = Math.floor(Math.random() * answerArray.length);
-          let answer = answerArray[randomAnswer];
-          console.log("The computer got " + answer);
-          return answer;
-        }
+      let computerScore = 0;
+      let playerScore = 0;
 
-        playerSelection = prompt("Rock, paper, scissors?");
-        const computerSelection = computerPlay();
-
-        if (
-          playerSelection.toLowercase() === "rock" &&
-          computerSelection === "scissors"
-        ) {
-          alert("You won!");
+      function computerPlay() {
+        let randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber == 0) {
+          return "rock";
+        } else if (randomNumber == 1) {
+          return "paper";
+        } else {
+          return "scissors";
         }
       }
 
+      function playRound(playerSelection, computerSelection) {
+        if (
+          (playerSelection == "rock" && computerSelection == "rock") ||
+          (playerSelection == "scissiors" && computerSelection == "scissors") ||
+          (playerSelection == "paper" && computerSelection == "paper")
+        ) {
+          return "It's a draw!";
+        } else {
+          return "It's not a draw!";
+        }
+      }
+
+      function game() {
+        let playerSelection = prompt("Rock, Paper, Scissors?");
+        playerSelection = playerSelection.toLowerCase();
+
+        let computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+      }
+
+      game();
       // JS END
     </script>
   </body>
