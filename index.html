@@ -7,6 +7,30 @@
     <title>Rocku</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      // JS START
+
+      function playRound(playerSelection, computerSelection) {
+        function computerPlay() {
+          const answerArray = ["rock", "paper", "scissors"];
+          let randomAnswer = Math.floor(Math.random() * answerArray.length);
+          let answer = answerArray[randomAnswer];
+          console.log("The computer got " + answer);
+          return answer;
+        }
+
+        playerSelection = prompt("Rock, paper, scissors?");
+        const computerSelection = computerPlay();
+
+        if (
+          playerSelection.toLowercase() === "rock" &&
+          computerSelection === "scissors"
+        ) {
+          alert("You won!");
+        }
+      }
+
+      // JS END
+    </script>
   </body>
 </html>
