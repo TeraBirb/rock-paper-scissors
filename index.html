@@ -27,24 +27,72 @@
       function playRound(playerSelection, computerSelection) {
         if (
           (playerSelection == "rock" && computerSelection == "rock") ||
-          (playerSelection == "scissiors" && computerSelection == "scissors") ||
+          (playerSelection == "scissors" && computerSelection == "scissors") ||
           (playerSelection == "paper" && computerSelection == "paper")
         ) {
           return "It's a draw!";
+        }
+        // Win conditions
+        else if (playerSelection == "rock" && computerSelection == "scissors") {
+          playerScore = playerScore + 1;
+          return "Rock beats scissors, you won!";
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+          playerScore = playerScore + 1;
+          return "Paper beats rock, you won!";
+        } else if (
+          playerSelection == "scissors" &&
+          computerSelection == "paper"
+        ) {
+          playerScore = playerScore + 1;
+          return "Scissors beats paper, you won!";
+        }
+        // Lose conditions
+        else if (playerSelection == "rock" && computerSelection == "paper") {
+          computerScore = computerScore + 1;
+          return "Rock loses to paper, you lost!";
+        } else if (
+          playerSelection == "paper" &&
+          computerSelection == "scissors"
+        ) {
+          computerScore = computerScore + 1;
+          return "Paper loses to scissors, you lost!";
+        } else if (
+          playerSelection == "scissors" &&
+          computerSelection == "rock"
+        ) {
+          computerScore = computerScore + 1;
+          return "Scissors loses to rock, you lost!";
         } else {
-          return "It's not a draw!";
+          return "Enter a valid answer";
+        }
+
+        // ||  ||  )
+      }
+
+      function game(num) {
+        if (num < 6) {
+          let playerSelection = prompt("Rock, Paper, Scissors?");
+          playerSelection = playerSelection.toLowerCase();
+
+          let computerSelection = computerPlay();
+          console.log(playRound(playerSelection, computerSelection));
+        }
+        if (num == 6) {
+          if (playerScore > computerScore) {
+            return (
+              "You: " + playerScore + " Com: " + computerScore + " You win!"
+            );
+          }
         }
       }
 
-      function game() {
-        let playerSelection = prompt("Rock, Paper, Scissors?");
-        playerSelection = playerSelection.toLowerCase();
-
-        let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-      }
-
-      game();
+      game(1);
+      game(2);
+      game(3);
+      game(4);
+      game(5);
+      game(6);
+      console.log(playerScore);
       // JS END
     </script>
   </body>
